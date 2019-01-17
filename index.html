@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Landing Page</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.min.css">
+    <link rel="stylesheet" href="css/wi-feedback.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-locale_ru-by.js"></script>
+    <script src="js/jquery-3.2.1.min.js"></script>
+
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/jquery.magnific-popup.min.js"></script>
+    <script src="js/jquery.wi-feedback.min.js"></script>
+    <script src="js/jquery.easing.1.3.js"></script>
+    <script src="js/script.js"></script>
+    <script src="https://api-maps.yandex.ru/2.1/?lang=ru_RU&onload=$.fn.lpMapInit" type="text/javascript"></script>
+
+</head>
+
+<body ng-app="lpApp" ng-controller="lpPriceCtrl">
+
+    <header>
+
+    </header>
+
+    <section id="slideshow">
+
+        <div class="container">
+
+            <div class="lp-content">
+                <div class="navigation">
+                    <ul>
+                        <li><a href="#slideshow">Главная</a></li>
+                        <li><a href="#services">Услуги</a></li>
+                        <li><a href="#portfolio">Портфолио</a></li>
+                        <li><a href="#prices">Цены</a></li>
+                        <li><a href="#contacts">Контакты</a></li>
+                    </ul>
+                </div>
+
+                <div class="lp-slider1 owl-carousel">
+
+                    <img src="img/slideshow/slide1.jpg" alt="Landing Page">
+                    <img src="img/slideshow/slide2.jpg" alt="Landing Page">
+                    <img src="img/slideshow/slide3.jpg" alt="Landing Page">
+                    <img src="img/slideshow/slide4.jpg" alt="Landing Page">
+
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services">
+        <div class="container">
+            <div class="lp-content">
+                <h2>Наши услуги</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas, fugiat ipsum suscipit porro quo cupiditate doloremque praesentium fugit distinctio, est repellat officiis cum eum tenetur aut possimus repellendus at maxime?</p>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio">
+        <div class="container">
+            <div class="lp-content">
+                <h2>Наши работы</h2>
+                <div class="lp-slider2 owl-carousel lp-gallery">
+                    <a href="img/slideshow/slide1.jpg"><img src="img/slideshow/slide1.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide2.jpg"><img src="img/slideshow/slide2.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide3.jpg"><img src="img/slideshow/slide3.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide1.jpg"><img src="img/slideshow/slide1.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide2.jpg"><img src="img/slideshow/slide2.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide3.jpg"><img src="img/slideshow/slide3.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide1.jpg"><img src="img/slideshow/slide1.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide2.jpg"><img src="img/slideshow/slide2.jpg" alt="Landing Page"></a>
+                    <a href="img/slideshow/slide3.jpg"><img src="img/slideshow/slide3.jpg" alt="Landing Page"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section id="prices">
+        <div class="container">
+            <div class="lp-content">
+                <h2>Цены на комплексы строительных работ</h2>
+                <div class="lp-tabs">
+
+                    <div data-tab-title=" Общестроительные работы">
+                        <p class="text-center"><strong>Общестрой</strong></p>
+
+
+                        <div class="lp-content">
+
+                            <table ng-show="pricesGeneral" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span>№</span>
+                                        </th>
+                                        <th ng-click="sortSet('name')">
+                                            <span>Наименование</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'name'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'name' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'name' && sortRev"></i>
+                                        </th>
+
+                                        <th> Ед. изм </th>
+                                        <th ng-click="sortSet('price')">
+                                            <span>Цена</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'price'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'price' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'price' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('discount')">
+                                            <span>Скидка</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'discount'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'discount' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'discount' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('sum')">
+                                            <span>Цена со скидкой</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'sum'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'sum' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'sum' && sortRev"></i>
+                                        </th>
+                                        <th>+</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat=" price in pricesGeneral | orderBy:sortBy:sortRev" ng-class="{oddtr: $odd,myPriceActive: price.select}">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <span>{{price.name}}</span>
+                                            <i class="fa fa-tag" ng-show="price.discount"></i>
+                                        </td>
+
+                                        <td>{{price.unit}}</td>
+                                        <td>{{price.price | currency}}</td>
+                                        <td>
+                                            <span ng-show="price.discount">{{price.discount * 100}}%</span>
+                                            <span ng-hide="price.discount">-</span>
+                                        </td>
+                                        <td>{{price.sum | currency}}</td>
+                                        <td><button id={{price.index}} class="btn btn-primary" ng-click=a ddToMyprice($event)>+ </button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div ng-hide="pricesGeneral" class="alert alert-danger" role="alert">
+                                <p>При загрузке данных произошла ошибка {{requestStatus}} ({{requestStatusText}}).</p>
+                            </div>
+                        </div>
+
+                        <p class="text-center">
+                            <a href="#lp-srv1" class="btn btn-primary lp-mfp-inline">Информация об услугах</a>
+                            <a href="#lp-fb1" class="btn btn-primary lp-fb1-link" data-wi-fb-info="Услуга 1">Заказать</a>
+                        </p>
+                    </div>
+
+
+                    <div data-tab-title=" Отделочные работы">
+                        <p class="text-center" class="text-center"><strong>Услуга 2</strong></p>
+
+
+
+                        <div class="lp-content">
+
+                            <table ng-show="prices1" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span>№</span>
+                                        </th>
+                                        <th ng-click="sortSet('name')">
+                                            <span>Наименование</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'name'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'name' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'name' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('price')">
+                                            <span>Цена</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'price'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'price' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'price' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('discount')">
+                                            <span>Скидка</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'discount'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'discount' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'discount' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('sum')">
+                                            <span>Цена со скидкой</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'sum'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'sum' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'sum' && sortRev"></i>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat=" price in prices1 | orderBy:sortBy:sortRev" ng-class="{oddtr: $odd}">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <span>{{price.name}}</span>
+                                            <i class="fa fa-tag" ng-show="price.discount"></i>
+                                        </td>
+                                        <td>{{price.price | currency}}</td>
+                                        <td>
+                                            <span ng-show="price.discount">{{price.discount * 100}}%</span>
+                                            <span ng-hide="price.discount">-</span>
+                                        </td>
+                                        <td>{{price.sum | currency}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div ng-hide="prices1" class="alert alert-danger" role="alert">
+                                <p>При загрузке данных произошла ошибка {{requestStatus}} ({{requestStatusText}}).</p>
+                            </div>
+                        </div>
+
+
+                        <p class="text-center">
+                            <a href="#lp-srv2" class="btn btn-primary lp-mfp-inline">Подробнее...</a>
+                            <a href="#lp-fb1" class="btn btn-primary lp-fb1-link" data-wi-fb-info="Услуга 2">Заказать</a>
+                        </p>
+                    </div>
+
+                    <div data-tab-title="Теплоснабжение и сети">
+                        <p class="text-center"><strong>Услуга 3</strong></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit non, exercitationem expedita et recusandae, numquam, mollitia consequatur facere adipisci placeat corrupti reprehenderit voluptate saepe provident magnam fugiat nesciunt impedit quasi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit non, exercitationem expedita et recusandae, numquam, mollitia consequatur facere adipisci placeat corrupti reprehenderit voluptate saepe provident magnam fugiat nesciunt impedit quasi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit non, exercitationem expedita et recusandae, numquam, mollitia consequatur facere adipisci placeat corrupti reprehenderit voluptate saepe provident magnam fugiat nesciunt impedit quasi.</p>
+                        <p class="text-center">
+                            <a href="#lp-srv3" class="btn btn-primary lp-mfp-inline">Подробнее...</a>
+                            <a href="#lp-fb1" class="btn btn-primary lp-fb1-link" data-wi-fb-info="Услуга 3">Заказать</a>
+                        </p>
+                    </div>
+
+                    <div data-tab-title="Проектирование и дизайн">
+                        <p class="text-center"><strong>Услуга 4</strong></p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit non, exercitationem expedita et recusandae, numquam, mollitia consequatur facere adipisci placeat corrupti reprehenderit voluptate saepe provident magnam fugiat nesciunt impedit quasi. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Velit non, exercitationem expedita et recusandae, numquam, mollitia consequatur facere adipisci placeat corrupti reprehenderit voluptate saepe provident magnam fugiat nesciunt impedit quasi.</p>
+                        <p class="text-center">
+                            <a href="#lp-srv4" class="btn btn-primary lp-mfp-inline">Подробнее...</a>
+                            <a href="#lp-fb1" class="btn btn-primary lp-fb1-link" data-wi-fb-info="Услуга 4">Заказать</a>
+                        </p>
+                    </div>
+
+
+                    <div data-tab-title="Ваша смета ">
+                        <p class="text-center"><strong>Здесь отображаются выбранные Вами виды работ</strong></p>
+
+
+
+                        <div class="lp-content">
+
+                            <table ng-show="MyPrice.length" class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <span>№</span>
+                                        </th>
+                                        <th ng-click="sortSet('name')">
+                                            <span>Наименование</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'name'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'name' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'name' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('price')">
+                                            <span>Цена</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'price'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'price' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'price' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('discount')">
+                                            <span>Скидка</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'discount'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'discount' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'discount' && sortRev"></i>
+                                        </th>
+                                        <th ng-click="sortSet('sum')">
+                                            <span>Цена со скидкой</span>
+                                            <i class="fa fa-sort" ng-show="sortBy != 'sum'"></i>
+                                            <i class="fa fa-sort-asc" ng-show="sortBy == 'sum' && !sortRev"></i>
+                                            <i class="fa fa-sort-desc" ng-show="sortBy == 'sum' && sortRev"></i>
+                                        </th>
+                                        <th>-</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat=" price in MyPrice | orderBy:sortBy:sortRev" ng-class="{oddtr: $odd}">
+                                        <td>{{$index + 1}}</td>
+                                        <td>
+                                            <span>{{price.name}}</span>
+                                            <i class="fa fa-tag" ng-show="price.discount"></i>
+                                        </td>
+                                        <td>{{price.price | currency}}</td>
+                                        <td>
+                                            <span ng-show="price.discount">{{price.discount * 100}}%</span>
+                                            <span ng-hide="price.discount">-</span>
+                                        </td>
+                                        <td>{{price.sum | currency}}</td>
+
+                                        <td><button id={{price.index}} class="btn btn-primary " ng-click=d elFromMyprice($event)>-</button></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <div ng-hide="MyPrice.length" class="alert alert-danger" role="alert">
+                                <p>Вы пока ничего не выбрали</p>
+                            </div>
+                        </div>
+
+
+                        <p class="text-center">
+
+                            <a href="#lp-fb2" class="btn btn-primary lp-fb2-link" data-wi-fb-info="{{userPrice}}">Оформить предварительный заказ</a>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+
+    </section>
+
+
+
+
+    <section id="contacts">
+        <div class="container">
+            <div class="lp-content">
+                <h2> О нас</h2>
+                <div class="row">
+
+
+                    <div class="col-sm-6">
+                        <h2>Карта проезда</h2>
+                        <div id="lp-map"></div>
+                    </div>
+
+                    <h2>Контакты</h2>
+                    <div class="col-sm-6">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse quos nesciunt fugit quam? Quis, pariatur possimus porro inventore velit, necessitatibus nisi fuga accusamus labore, ab ut quos hic, laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse quos nesciunt fugit quam? Quis, pariatur possimus porro inventore velit, necessitatibus nisi fuga accusamus labore, ab ut quos hic, laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse quos nesciunt fugit quam? Quis, pariatur possimus porro inventore velit, necessitatibus nisi fuga accusamus labore, ab ut quos hic, laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse quos nesciunt fugit quam? Quis, pariatur possimus porro inventore velit, necessitatibus nisi fuga accusamus labore, ab ut quos hic, laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse quos nesciunt fugit quam? Quis, pariatur possimus porro inventore velit, necessitatibus nisi fuga accusamus labore, ab ut quos hic, laborum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, esse quos nesciunt fugit quam? Quis, pariatur possimus porro inventore velit, necessitatibus nisi fuga accusamus labore, ab ut quos hic, laborum.
+
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© Nikitsin Artur 2017</p>
+        </div>
+    </footer>
+
+    <div class="lp-modals">
+
+        <div id="lp-srv1" class="lp-popup">
+            <h2>Описание услуги 1</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Mollitia ipsum voluptatem veniam, dignissimos quae dolorum aut ex quam porro fugiat commodi accusantium velit inventore ipsa! Illo, exercitationem! Commodi, deleniti iusto.</p>
+        </div>
+
+        <div id="lp-srv2" class="lp-popup">
+            <h2>Описание услуги 2</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat saepe possimus numquam repellendus sequi accusantium quas quod error, eligendi vero voluptas voluptate voluptatibus aspernatur inventore asperiores harum aliquid mollitia laudantium!</p>
+        </div>
+
+        <div id="lp-srv3" class="lp-popup">
+            <h2>Описание услуги 3</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis iure quis assumenda! Repudiandae libero, similique laudantium ratione voluptate a possimus aspernatur placeat maiores ipsam. Veniam quo repellendus similique tempore, iste!</p>
+        </div>
+
+        <div id="lp-srv4" class="lp-popup">
+            <h2>Описание услуги 4</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laborum aperiam quidem tempore qui aliquam molestiae ex fuga repellat autem! Non, obcaecati laborum dolor, earum inventore voluptatum ipsa illo eius consequatur?</p>
+        </div>
+
+        <div id="lp-fb1">
+            <h2>Свяжитесь с нами</h2>
+            <h3>Заполните контактные данные, и мы свяжемся с вами в кратчайшие сроки:</h3>
+
+            <input type="text " name="name " maxlength="50 " data-wi-fb-caption="Имя " placeholder="Ваше Имя... " />
+            <input type="text " name="name " maxlength="50 " data-wi-fb-caption="Имя " placeholder="Серия и номер документа... " />
+            <input type="tel " name="phone " maxlength="50 " data-wi-fb-caption="Телефон " placeholder="Ваш Телефон... " required />
+            <input type="email " name="email " maxlength="50 " data-wi-fb-caption="Почта " placeholder="Ваш E-mail... " />
+            <textarea name="message " maxlength="500 " data-wi-fb-caption="Сообщение " placeholder="Сообщение..."></textarea>
+            <button>Заказать</button>
+        </div>
+
+        <div id="lp-fb2">
+            <h2>Заказать услуги</h2>
+            <h3>Заполните контактные данные, и мы свяжемся с вами в кратчайшие сроки:</h3>
+
+
+            <div class="lp-content">
+
+                <table ng-show="MyPrice.length" class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <span>№</span>
+                            </th>
+                            <th ng-click="sortSet('name')">
+                                <span>Наименование</span>
+                                <i class="fa fa-sort" ng-show="sortBy != 'name'"></i>
+                                <i class="fa fa-sort-asc" ng-show="sortBy == 'name' && !sortRev"></i>
+                                <i class="fa fa-sort-desc" ng-show="sortBy == 'name' && sortRev"></i>
+                            </th>
+                            <th ng-click="sortSet('price')">
+                                <span>Цена</span>
+                                <i class="fa fa-sort" ng-show="sortBy != 'price'"></i>
+                                <i class="fa fa-sort-asc" ng-show="sortBy == 'price' && !sortRev"></i>
+                                <i class="fa fa-sort-desc" ng-show="sortBy == 'price' && sortRev"></i>
+                            </th>
+                            <th ng-click="sortSet('discount')">
+                                <span>Скидка</span>
+                                <i class="fa fa-sort" ng-show="sortBy != 'discount'"></i>
+                                <i class="fa fa-sort-asc" ng-show="sortBy == 'discount' && !sortRev"></i>
+                                <i class="fa fa-sort-desc" ng-show="sortBy == 'discount' && sortRev"></i>
+                            </th>
+                            <th ng-click="sortSet('sum')">
+                                <span>Цена со скидкой</span>
+                                <i class="fa fa-sort" ng-show="sortBy != 'sum'"></i>
+                                <i class="fa fa-sort-asc" ng-show="sortBy == 'sum' && !sortRev"></i>
+                                <i class="fa fa-sort-desc" ng-show="sortBy == 'sum' && sortRev"></i>
+                            </th>
+                            <th>-</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat=" price in MyPrice | orderBy:sortBy:sortRev" ng-class="{oddtr: $odd}">
+                            <td>{{$index + 1}}</td>
+                            <td>
+                                <span>{{price.name}}</span>
+                                <i class="fa fa-tag" ng-show="price.discount"></i>
+                            </td>
+                            <td>{{price.price | currency}}</td>
+                            <td>
+                                <span ng-show="price.discount">{{price.discount * 100}}%</span>
+                                <span ng-hide="price.discount">-</span>
+                            </td>
+                            <td>{{price.sum | currency}}</td>
+
+                            <td><button id={{price.index}} class="btn btn-primary " ng-click=d elFromMyprice($event)>-</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div ng-hide="MyPrice.length" class="alert alert-danger" role="alert">
+                    <p>Вы пока ничего не выбрали</p>
+                </div>
+            </div>
+
+            <input type="text " name="name " maxlength="50 " data-wi-fb-caption="Имя " placeholder="Ваше Имя... " />
+            <input type="tel " name="phone " maxlength="50 " data-wi-fb-caption="Телефон " placeholder="Ваш Телефон... " required />
+            <input type="email " name="email " maxlength="50 " data-wi-fb-caption="Почта " placeholder="Ваш E-mail... " />
+            <textarea name="message " maxlength="500 " data-wi-fb-caption="Сообщение " placeholder="Сообщение..."></textarea>
+            <button>Заказать</button>
+        </div>
+
+    </div>
+
+
+
+    <div id="callbutton">
+
+        <a href="#lp-fb1" class=" lp-fb1-link" data-wi-fb-info="Услуга 2"><i class="fa fa-phone" aria-hidden="true"></i></a>
+
+    </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,258 @@
+
+.navigation {
+    position: absolute;
+    top: 80%;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    z-index: 100;
+
+}
+
+.navigation.stop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.3);
+    width: 100%;
+    z-index: 100;
+
+}
+
+.navigation ul {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+.navigation ul li {
+    display: inline-block;
+}
+
+.navigation ul li a,
+.navigation ul li a:focus {
+    display: inline-block;
+    padding: 10px 20px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: color .25s, padding .25s;
+}
+
+.navigation ul li a:hover,
+.navigation ul li.active a {
+    color: #337ab7;
+    text-decoration: none;
+}
+
+.navigation.top ul li a {
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+
+.lp-content {
+    width: 100%;
+}
+
+.lp-content h2 {
+    text-align: center;
+    color: #337ab7;
+    margin: 0 0 20px 0;
+}
+
+footer {
+    background: black;
+    padding: 25px;
+}
+
+footer p {
+    text-align: center;
+    margin: 0;
+    color: #fff;
+}
+
+/* Слайдшоу */
+
+#slideshow .lp-content {
+    position: relative;
+    padding: 0;
+}
+
+.owl-dots {
+    position: absolute;
+    left: 0;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.owl-dot {
+    display: inline-block;
+    padding: 0 10px;
+    opacity: 0.75;
+}
+
+.owl-dot span {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background: #fff;
+    border-radius: 100%;
+    transition: background-color .25s;
+}
+
+.owl-dot.active span {
+    background: black;
+}
+
+.owl-nav > div {
+    position: absolute;
+    top: 50%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    /*background: rgba(0, 0, 0, 0.3);*/
+    /*border-radius: 100%;*/
+    opacity: 0.75;
+    text-align: center;
+    transition: opacity .25s;
+}
+
+.owl-nav > div:hover {
+    opacity: 0.95;
+}
+
+.owl-prev {
+    left: -40px;
+}
+
+.owl-next {
+    right: -40px;
+}
+
+.owl-nav i {
+    font-size: 50px;
+    color: rgba(0, 0, 0, 0.3);
+    line-height: 40px;
+}
+
+/* Табулятор */
+
+.lp-tabs {
+    padding: 20px;
+}
+
+.lp-tabs .lp-tabs-titles ul {
+    padding: 0;
+    margin: 0 0 20px 0;
+    text-align: center;
+}
+
+.lp-tabs .lp-tabs-titles ul li {
+    display: inline-block;
+    padding: 5px 10px;
+    margin: 5px;
+    background: #ccc;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: color .25s, background-color .25s;
+}
+
+.lp-tabs .lp-tabs-titles ul li:hover,
+.lp-tabs .lp-tabs-titles ul li.active {
+    background: #337ab7;
+    color: #fff;
+}
+
+.lp-tabs .lp-tabs-content {
+    position: relative;
+}
+
+.lp-tabs .lp-tabs-content .lp-tab {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    display: none;
+}
+
+/* Модальные окна */
+
+.lp-modals {
+    display: none;
+}
+
+.lp-popup {
+    position: relative;
+    background: #FFF;
+    padding: 20px;
+    width: auto;
+    max-width: 500px;
+    margin: 20px auto;
+}
+
+#prices table th {
+    background: #337ab7;
+    color: #fff;
+    text-align: center;
+    -webkit-user-select: none;
+}
+
+#prices table th[ng-click] {
+    cursor: pointer;
+}
+
+#prices table td i {
+    color: red;
+}
+
+.oddtr {
+    background: white;
+}
+
+#callbutton {
+    cursor: pointer;
+    position: fixed;
+    top: 95%;
+    left: 120%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    background: green;
+    border-radius: 100%;
+    z-index: 100;
+
+}
+
+#callbutton.active {
+    cursor: pointer;
+    position: fixed;
+    top: 95%;
+    left: 96%;
+    width: 40px;
+    height: 40px;
+    margin-top: -20px;
+    background: red;
+    border-radius: 100%;
+    z-index: 100;
+
+}
+
+#callbutton i {
+
+    position: absolute;
+    top: 30%;
+    left: 30%;
+    font-size: 20px;
+    color: white;
+    line-height: 20px;
+}
+
+.myPriceActive {
+    background: rgba(0, 0, 0, 0.1);
+}
+
+#lp-map {
+    height: 400px;
+}
